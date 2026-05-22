@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shree Bhanubhakta Secondary School – Pyuthan, Nepal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --orange: #e85d04;
+            --orange-light: #ff8c42;
+            --orange-pale: #fff3e0;
+            --dark: #12122a;
+            --dark-2: #1e1e38;
+            --gray: #6b7280;
+            --gray-light: #f8f7f5;
+            --white: #ffffff;
+            --text: #1f2937;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--text); }
+
+        /* ── NAVBAR ── */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 18px 7%;
+            background: rgba(18,18,42,0.88);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+        }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--white); letter-spacing: -0.3px; }
+        .logo span { color: var(--orange-light); }
+        nav ul { display: flex; list-style: none; gap: 30px; }
+        nav ul li a { text-decoration: none; color: rgba(255,255,255,0.75); font-size: 0.88rem; font-weight: 500; letter-spacing: 0.3px; transition: color 0.3s; }
+        nav ul li a:hover { color: var(--orange-light); }
+        .nav-cta { background: var(--orange) !important; color: white !important; padding: 8px 22px; border-radius: 50px; }
+        .nav-cta:hover { background: var(--orange-light) !important; color: white !important; }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 100vh; position: relative;
+            background:
+                linear-gradient(135deg, rgba(18,18,42,0.93) 0%, rgba(18,18,42,0.72) 55%, rgba(232,93,4,0.38) 100%),
+                url('bhanubhakta.jpg') center/cover no-repeat;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; padding: 140px 8% 80px;
+        }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(232,93,4,0.18); border: 1px solid rgba(232,93,4,0.45);
+            color: var(--orange-light); font-size: 0.8rem; font-weight: 600;
+            padding: 7px 20px; border-radius: 50px; margin-bottom: 28px;
+            letter-spacing: 1.5px; text-transform: uppercase;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.6rem, 5.5vw, 5rem);
+            font-weight: 900; color: var(--white); line-height: 1.1;
+            margin-bottom: 10px; max-width: 860px;
+        }
+        .hero h1 em { font-style: italic; color: var(--orange-light); }
+        .hero-sub-title {
+            color: rgba(255,255,255,0.55); font-size: 0.88rem;
+            letter-spacing: 0.5px; margin-bottom: 20px; max-width: 600px;
+        }
+        .hero p {
+            font-size: 1.1rem; color: rgba(255,255,255,0.72);
+            max-width: 560px; line-height: 1.8; margin-bottom: 38px; font-weight: 300;
+        }
+        .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+        .btn-primary {
+            padding: 15px 34px; background: var(--orange); color: white;
+            border: none; border-radius: 50px; font-size: 0.92rem; font-weight: 600;
+            cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.3s;
+            text-decoration: none; display: inline-block;
+        }
+        .btn-primary:hover { background: var(--orange-light); transform: translateY(-2px); box-shadow: 0 14px 32px rgba(232,93,4,0.4); }
+        .btn-outline {
+            padding: 15px 34px; background: transparent; color: white;
+            border: 1.5px solid rgba(255,255,255,0.38); border-radius: 50px;
+            font-size: 0.92rem; font-weight: 500; cursor: pointer;
+            font-family: 'DM Sans', sans-serif; transition: all 0.3s;
+            text-decoration: none; display: inline-block;
+        }
+        .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.1); }
+
+        /* ── STATS BAR ── */
+        .stats-bar {
+            background: var(--dark); padding: 44px 8%;
+            display: flex; justify-content: center; gap: 70px; flex-wrap: wrap;
+        }
+        .stat-item { text-align: center; }
+        .stat-item h3 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--orange-light); font-weight: 700; }
+        .stat-item p { color: rgba(255,255,255,0.55); font-size: 0.82rem; margin-top: 5px; letter-spacing: 1.2px; text-transform: uppercase; font-weight: 500; }
+
+        /* ── SECTION HELPERS ── */
+        .section-label { display: inline-block; color: var(--orange); font-size: 0.78rem; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 10px; }
+        .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 3.5vw, 2.8rem); font-weight: 700; color: var(--dark); line-height: 1.2; margin-bottom: 14px; }
+        .section-sub { color: var(--gray); font-size: 1rem; line-height: 1.75; max-width: 540px; }
+
+        /* ── NOTICE TICKER ── */
+        .ticker-wrap {
+            background: var(--orange); padding: 10px 0; overflow: hidden;
+            display: flex; align-items: center;
+        }
+        .ticker-label {
+            background: var(--dark); color: white; font-size: 0.78rem;
+            font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+            padding: 0 18px; white-space: nowrap; flex-shrink: 0; height: 100%;
+            display: flex; align-items: center;
+        }
+        .ticker-track { display: flex; animation: ticker 28s linear infinite; }
+        .ticker-track span { color: white; font-size: 0.85rem; font-weight: 500; padding: 0 50px; white-space: nowrap; }
+        @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* ── FEATURES ── */
+        .features { padding: 100px 7%; background: var(--gray-light); }
+        .features-header { text-align: center; margin-bottom: 56px; }
+        .features-header .section-sub { margin: 0 auto; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; }
+        .feature-card {
+            background: var(--white); border-radius: 20px; padding: 36px 28px;
+            position: relative; overflow: hidden; transition: all 0.35s;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .feature-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(90deg, var(--orange), var(--orange-light));
+            transform: scaleX(0); transition: transform 0.35s;
+        }
+        .feature-card:hover { transform: translateY(-8px); box-shadow: 0 24px 50px rgba(0,0,0,0.09); }
+        .feature-card:hover::before { transform: scaleX(1); }
+        .feature-icon {
+            width: 56px; height: 56px; background: var(--orange-pale);
+            border-radius: 14px; display: flex; align-items: center;
+            justify-content: center; font-size: 1.5rem; color: var(--orange); margin-bottom: 22px;
+        }
+        .feature-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; color: var(--dark); }
+        .feature-card p { color: var(--gray); line-height: 1.7; font-size: 0.92rem; }
+
+        /* ── ABOUT ── */
+        .about { padding: 100px 7%; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+        .about-image-wrap { position: relative; }
+        .about-image-wrap img { width: 100%; border-radius: 24px; display: block; aspect-ratio: 4/3; object-fit: cover; }
+        .about-badge {
+            position: absolute; bottom: -20px; right: -20px;
+            background: var(--orange); color: white; border-radius: 16px;
+            padding: 18px 26px; text-align: center; font-family: 'Playfair Display', serif;
+            box-shadow: 0 10px 30px rgba(232,93,4,0.4);
+        }
+        .about-badge .num { font-size: 1.9rem; font-weight: 900; display: block; }
+        .about-badge .lbl { font-size: 0.78rem; opacity: 0.88; }
+        .about-text p { color: var(--gray); line-height: 1.8; margin-bottom: 14px; font-size: 0.97rem; }
+        .about-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 26px; }
+        .tag { background: var(--orange-pale); color: var(--orange); border-radius: 50px; padding: 6px 18px; font-size: 0.82rem; font-weight: 500; }
+
+        /* ── PRINCIPAL MESSAGE ── */
+        .principal-section {
+            padding: 90px 7%; background: var(--dark);
+            display: grid; grid-template-columns: auto 1fr; gap: 70px; align-items: start;
+        }
+        .principal-card { text-align: center; }
+        .principal-card img {
+            width: 180px; height: 180px; border-radius: 50%; object-fit: cover;
+            border: 4px solid var(--orange); display: block; margin: 0 auto 16px;
+        }
+        .principal-card h4 { color: var(--white); font-size: 1.1rem; font-weight: 600; margin-bottom: 4px; }
+        .principal-card span { color: var(--orange-light); font-size: 0.85rem; }
+        .principal-text .section-label { }
+        .principal-text .section-title { color: var(--white); }
+        .principal-text p { color: rgba(255,255,255,0.6); line-height: 1.85; font-size: 0.97rem; margin-bottom: 14px; }
+        blockquote {
+            border-left: 3px solid var(--orange); padding-left: 20px; margin: 24px 0;
+            font-family: 'Playfair Display', serif; font-style: italic;
+            color: rgba(255,255,255,0.85); font-size: 1.1rem; line-height: 1.7;
+        }
+
+        /* ── VM ── */
+        .vm-section {
+            padding: 0; display: grid;
+            grid-template-columns: repeat(3, 1fr); gap: 1px;
+            background: rgba(255,255,255,0.06);
+        }
+        .vm-card { padding: 52px 40px; background: var(--dark-2); transition: background 0.3s; }
+        .vm-card:hover { background: rgba(232,93,4,0.12); }
+        .vm-icon {
+            width: 50px; height: 50px; border: 1.5px solid rgba(232,93,4,0.38);
+            border-radius: 13px; display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem; color: var(--orange-light); margin-bottom: 22px;
+        }
+        .vm-card h2 { font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--white); margin-bottom: 12px; }
+        .vm-card p { color: rgba(255,255,255,0.52); line-height: 1.75; font-size: 0.93rem; }
+
+        /* ── FEATURES GRID (photo highlights) ── */
+        .highlights { padding: 100px 7%; background: var(--gray-light); }
+        .highlights-header { text-align: center; margin-bottom: 56px; }
+        .highlights-header .section-sub { margin: 0 auto; }
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .highlight-card {
+            border-radius: 18px; overflow: hidden; position: relative;
+            aspect-ratio: 4/3; cursor: default;
+        }
+        .highlight-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+        .highlight-card:hover img { transform: scale(1.06); }
+        .highlight-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(18,18,42,0.85) 0%, rgba(18,18,42,0.1) 60%);
+            display: flex; align-items: flex-end; padding: 22px;
+        }
+        .highlight-overlay h4 { color: white; font-size: 0.95rem; font-weight: 600; line-height: 1.4; }
+        .highlight-overlay i { color: var(--orange-light); margin-right: 8px; font-size: 0.85rem; }
+
+        /* ── PROGRAMS ── */
+        .programs { padding: 100px 7%; background: var(--white); }
+        .programs-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 56px; flex-wrap: wrap; gap: 20px; }
+        .programs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 26px; }
+        .program-card { background: var(--gray-light); border-radius: 22px; overflow: hidden; transition: all 0.35s; border: 1px solid rgba(0,0,0,0.05); }
+        .program-card:hover { transform: translateY(-8px); box-shadow: 0 28px 55px rgba(0,0,0,0.11); }
+        .program-card-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
+        .program-card-body { padding: 30px; }
+        .program-num { font-family: 'Playfair Display', serif; font-size: 2.6rem; font-weight: 900; color: rgba(0,0,0,0.07); float: right; margin-top: -6px; }
+        .program-card-body h3 { font-size: 1.2rem; font-weight: 600; color: var(--dark); margin-bottom: 9px; }
+        .program-card-body p { color: var(--gray); line-height: 1.7; font-size: 0.92rem; margin-bottom: 22px; }
+        .read-more { display: inline-flex; align-items: center; gap: 8px; color: var(--orange); font-size: 0.88rem; font-weight: 600; text-decoration: none; transition: gap 0.3s; }
+        .read-more:hover { gap: 14px; }
+
+        /* ── CONTACT ── */
+        .contact-section { padding: 100px 7%; background: var(--gray-light); }
+        .contact-header { text-align: center; margin-bottom: 56px; }
+        .contact-header .section-sub { margin: 0 auto; }
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 22px; }
+        .contact-card {
+            background: var(--white); border-radius: 20px; padding: 36px 28px;
+            text-align: center; border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        .contact-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+        .contact-card .ci { width: 52px; height: 52px; background: var(--orange-pale); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: var(--orange); margin: 0 auto 18px; }
+        .contact-card h4 { font-size: 0.8rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gray); margin-bottom: 10px; }
+        .contact-card p, .contact-card a { color: var(--dark); font-size: 0.95rem; line-height: 1.6; text-decoration: none; font-weight: 500; }
+        .contact-card a:hover { color: var(--orange); }
+
+        /* ── FOOTER ── */
+        .footer { background: var(--dark); padding: 80px 7% 36px; }
+        .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; padding-bottom: 56px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+        .footer-brand .logo { display: block; margin-bottom: 18px; font-size: 1.5rem; }
+        .footer-brand p { color: rgba(255,255,255,0.48); line-height: 1.8; font-size: 0.92rem; margin-bottom: 30px; }
+        .social-row { display: flex; gap: 12px; }
+        .social-row a {
+            width: 38px; height: 38px; border: 1px solid rgba(255,255,255,0.14);
+            border-radius: 10px; display: flex; align-items: center; justify-content: center;
+            color: rgba(255,255,255,0.55); font-size: 0.9rem; text-decoration: none; transition: all 0.3s;
+        }
+        .social-row a:hover { background: var(--orange); border-color: var(--orange); color: white; }
+        .footer-col h4 { color: var(--white); font-size: 0.8rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 22px; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a { color: rgba(255,255,255,0.48); text-decoration: none; font-size: 0.9rem; transition: all 0.3s; }
+        .footer-col ul li a:hover { color: var(--orange-light); padding-left: 5px; }
+        .contact-item { display: flex; gap: 11px; align-items: flex-start; margin-bottom: 16px; color: rgba(255,255,255,0.48); font-size: 0.9rem; line-height: 1.6; }
+        .contact-item i { color: var(--orange); margin-top: 3px; flex-shrink: 0; }
+        .footer-bottom { padding-top: 30px; text-align: center; color: rgba(255,255,255,0.28); font-size: 0.84rem; }
+
+        /* ── RESPONSIVE ── */
+        @media(max-width:1000px){
+            .about { grid-template-columns: 1fr; gap: 50px; }
+            .about-badge { bottom: 12px; right: 12px; }
+            .principal-section { grid-template-columns: 1fr; gap: 40px; }
+            .principal-card img { width: 140px; height: 140px; }
+            .vm-section { grid-template-columns: 1fr; }
+            .footer-top { grid-template-columns: 1fr; gap: 40px; }
+            .highlights-grid { grid-template-columns: repeat(2,1fr); }
+        }
+        @media(max-width:700px){
+            nav ul { display: none; }
+            .hero { padding: 120px 5% 60px; }
+            .features, .about, .programs, .highlights, .contact-section { padding: 60px 5%; }
+            .principal-section { padding: 60px 5%; }
+            .programs-header { flex-direction: column; align-items: flex-start; }
+            .stats-bar { gap: 36px; padding: 36px 5%; }
+            .highlights-grid { grid-template-columns: 1fr; }
+            .footer { padding: 60px 5% 30px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <h1 class="logo">Bhanu<span>bhakta</span> School</h1>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">News and Events</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Teacher and Staff</a></li>
+        <li><a href="#">Programs</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#" class="nav-cta">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-badge"><i class="fas fa-award"></i> Established 2022 B.S. &nbsp;·&nbsp; Pyuthan's First Technical School</div>
+    <h1>Shree <em>Bhanubhakta</em><br>Secondary School</h1>
+    <p class="hero-sub-title">Authorized for Technical & Vocational Education · Classes 1–12</p>
+    <p>Nurturing capable and responsible citizens through quality education in the heart of Lumbini Province, Nepal.</p>
+    <div class="hero-buttons">
+        <a href="#" class="btn-primary">Explore Programs</a>
+        <a href="#" class="btn-outline">Learn About Us</a>
+    </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+    <div class="stat-item"><h3>2022</h3><p>Established (B.S.)</p></div>
+    <div class="stat-item"><h3>1–12</h3><p>Classes Offered</p></div>
+    <div class="stat-item"><h3>3,010</h3><p>Facebook Followers</p></div>
+    <div class="stat-item"><h3>12,868</h3><p>Website Visitors</p></div>
+</div>
+
+<!-- NOTICE TICKER -->
+<div class="ticker-wrap">
+    <div class="ticker-label"><i class="fas fa-bullhorn" style="margin-right:8px"></i> Notices</div>
+    <div class="ticker-track">
+        <span>🎓 Admission open for academic year 2082 B.S. — General & Technical streams available</span>
+        <span>📋 Class 11 final examinations are underway — best wishes to all students</span>
+        <span>🏫 Shree Bhanubhakta Secondary School — First technical school in Pyuthan District</span>
+        <span>📞 Contact: 9847821279 &nbsp;|&nbsp; bhanumavi34@gmail.com</span>
+        <span>🎓 Admission open for academic year 2082 B.S. — General & Technical streams available</span>
+        <span>📋 Class 11 final examinations are underway — best wishes to all students</span>
+        <span>🏫 Shree Bhanubhakta Secondary School — First technical school in Pyuthan District</span>
+        <span>📞 Contact: 9847821279 &nbsp;|&nbsp; bhanumavi34@gmail.com</span>
+    </div>
+</div>
+
+<!-- FEATURES -->
+<section class="features">
+    <div class="features-header">
+        <span class="section-label">Why Choose Us</span>
+        <h2 class="section-title">What Makes Us Stand Out</h2>
+        <p class="section-sub">From modern labs to agriculture fields — we offer a complete learning environment rooted in our community.</p>
+    </div>
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-flask"></i></div>
+            <h3>Modern Laboratories</h3>
+            <p>Well-equipped science and computer labs for hands-on, practical learning experiences.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-seedling"></i></div>
+            <h3>Agriculture Field</h3>
+            <p>Our own field for agriculture study — students learn crop science through real fieldwork, not just theory.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-user-graduate"></i></div>
+            <h3>Skilled & Trained Teachers</h3>
+            <p>Experienced faculty dedicated to developing each student's potential academically and personally.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-home"></i></div>
+            <h3>Hostel Facility</h3>
+            <p>Well-managed hostel accommodation for students coming from distant villages and areas.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-wifi"></i></div>
+            <h3>Internet Connected</h3>
+            <p>MV.PS.-speed internet to support modern digital teaching activities and academic research.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-futbol"></i></div>
+            <h3>Sports Ground</h3>
+            <p>A dedicated sports field for student recreation, physical fitness, and team-building activities.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+    <div class="about-image-wrap">
+        <img src="school.jpg">
+        <div class="about-badge">
+            <span class="num">75+</span>
+            <span class="lbl">Years of Legacy</span>
+        </div>
+    </div>
+    <div class="about-text">
+        <span class="section-label">Our Story</span>
+        <h2 class="section-title">Shree Bhanubhakta<br>Secondary School</h2>
+        <p>Shree Bhanubhakta Secondary School was established in 2022 B.S. in the open field of Barbot, Mallarani, supported by local education enthusiasts and community workers.</p>
+        <p>Teaching was begun by three dedicated individuals — Khupram Sharma, Dilliraj Upadhyay (Kaila Pandit), and Mathavar Singh Rana (Halkara) — who built this institution from the ground up with community donations.</p>
+        <p>Today the school runs from Class 1 to 12 in both general and technical/vocational streams, with a 5-year master plan (2076–80 B.S.) underway to become a model school for rural Nepal.</p>
+        <div class="about-tags">
+            <span class="tag">Technical & Vocational</span>
+            <span class="tag">Classes 1–12</span>
+            <span class="tag">Community Founded</span>
+            <span class="tag">Lumbini Province</span>
+        </div>
+    </div>
+</section>
+
+<!-- PRINCIPAL MESSAGE -->
+<section class="principal-section">
+    <div class="principal-card">
+        <img src="principle.jpg">
+        <h4>Chakrapani Paudel</h4>
+        <span>Principal</span>
+    </div>
+    <div class="principal-text">
+        <span class="section-label">Message from the Principal</span>
+        <h2 class="section-title">A Word from Our Principal</h2>
+        <blockquote>"Education gives every individual the ability to accomplish tasks with ease and shapes human life with awareness and consciousness."</blockquote>
+        <p>Our school provides an opportunity for students from low-income rural families to access quality education at very low cost — covering general subjects, humanities, and technical streams including agriculture and plant science.</p>
+        <p>We believe that education must meet the needs of the time and society. At Bhanubhakta, both general and technical streams are available from Class 9 to 12, ensuring every student can find their path.</p>
+        <p>We are committed to building a model school that stands as a beacon of educational excellence in rural Lumbini Province.</p>
+    </div>
+</section>
+
+<!-- VISION / MISSION -->
+<div class="vm-section">
+    <div class="vm-card">
+        <div class="vm-icon"><i class="fas fa-eye"></i></div>
+        <h2>Our Vision</h2>
+        <p>To become a leading model institution producing capable, responsible, and compassionate citizens who contribute meaningfully to Nepali society.</p>
+    </div>
+    <div class="vm-card">
+        <div class="vm-icon"><i class="fas fa-bullseye"></i></div>
+        <h2>Our Mission</h2>
+        <p>To provide quality general and technical education with a focus on knowledge, discipline, creativity, and holistic development for every student.</p>
+    </div>
+    <div class="vm-card">
+        <div class="vm-icon"><i class="fas fa-heart"></i></div>
+        <h2>Our Values</h2>
+        <p>Honesty, mutual respect, teamwork, discipline, and the relentless pursuit of excellence — in academics and in life.</p>
+    </div>
+</div>
+
+<!-- SCHOOL HIGHLIGHTS / GALLERY PREVIEW -->
+<section class="highlights">
+    <div class="highlights-header">
+        <span class="section-label">School Life</span>
+        <h2 class="section-title">Our Highlights</h2>
+        <p class="section-sub">A glimpse into the rich academic and community life at Shree Bhanubhakta Secondary School.</p>
+    </div>
+    <div class="highlights-grid">
+        <div class="highlight-card">
+            <img src="https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=800" alt="Classroom">
+            <div class="highlight-overlay"><h4><i class="fas fa-chalkboard-teacher"></i> Modern Classrooms</h4></div>
+        </div>
+        <div class="highlight-card">
+            <img src="https://images.unsplash.com/photo-1530099486328-e021101a494a?q=80&w=800" alt="Lab">
+            <div class="highlight-overlay"><h4><i class="fas fa-flask"></i> Science Laboratory</h4></div>
+        </div>
+        <div class="highlight-card">
+            <img src="agriculture.jpg">
+            <div class="highlight-overlay"><h4><i class="fas fa-seedling"></i> Agriculture Field Practice</h4></div>
+        </div>
+        <div class="highlight-card">
+            <img src="bhanubhakta.jpg">
+            <div class="highlight-overlay"><h4><i class="fas fa-user-graduate"></i> Dedicated Teaching Staff</h4></div>
+        </div>
+        <div class="highlight-card">
+            <img src="">
+            <div class="highlight-overlay"><h4><i class="fas fa-running"></i> Sports & Physical Activity</h4></div>
+        </div>
+        <div class="highlight-card">
+            <img src="learning.jpg">
+            <div class="highlight-overlay"><h4><i class="fas fa-book"></i> Peaceful Learning Environment</h4></div>
+        </div>
+    </div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="programs">
+    <div class="programs-header">
+        <div>
+            <span class="section-label">Academic Streams</span>
+            <h2 class="section-title">Our Programs</h2>
+        </div>
+        <p class="section-sub" style="max-width:320px;">From basic education to technical vocational training — a full journey of learning.</p>
+    </div>
+    <div class="programs-grid">
+        <div class="program-card">
+            <img class="program-card-img" src="primary.jpg">
+            <div class="program-card-body">
+                <span class="program-num">01</span>
+                <h3>Basic Level (Class 1–8)</h3>
+                <p>A strong foundation in literacy, numeracy, science, and social studies in a caring and supportive environment.</p>
+                <a href="#" class="read-more">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+        <div class="program-card">
+            <img class="program-card-img" src="secondary.jpg">
+            <div class="program-card-body">
+                <span class="program-num">02</span>
+                <h3>Secondary General (Class 9–12)</h3>
+                <p>Science, Humanities, and Management streams preparing students for SEE, NEB, and higher education.</p>
+                <a href="#" class="read-more">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+        <div class="program-card">
+            <img class="program-card-img" src="agriculture.jpg">
+            <div class="program-card-body">
+                <span class="program-num">03</span>
+                <h3>Technical & Vocational (Class 9–12)</h3>
+                <p>Pyuthan's first technical school — offering agriculture, plant science, and vocational programs since 2070 B.S.</p>
+                <a href="#" class="read-more">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section">
+    <div class="contact-header">
+        <span class="section-label">Get in Touch</span>
+        <h2 class="section-title">Contact Us</h2>
+        <p class="section-sub">We'd love to hear from you — whether you're a parent, student, or community member.</p>
+    </div>
+    <div class="contact-grid">
+        <div class="contact-card">
+            <div class="ci"><i class="fas fa-map-marker-alt"></i></div>
+            <h4>Address</h4>
+            <p>Mallarani Gaupalika, Ward No. 3, Barbot, Pyuthan, Lumbini Province, Nepal</p>
+        </div>
+        <div class="contact-card">
+            <div class="ci"><i class="fas fa-phone-alt"></i></div>
+            <h4>Phone</h4>
+            <a href="tel:9847821279">9847821279</a>
+        </div>
+        <div class="contact-card">
+            <div class="ci"><i class="fas fa-envelope"></i></div>
+            <h4>Email</h4>
+            <a href="mailto:bhanumavi34@gmail.com">bhanumavi34@gmail.com</a>
+        </div>
+        <div class="contact-card">
+            <div class="ci"><i class="fas fa-globe"></i></div>
+            <h4>Website</h4>
+            <a href="https://bbsspyuthan.edu.np" target="_blank">bbsspyuthan.edu.np</a>
+        </div>
+        <div class="contact-card">
+            <div class="ci"><i class="fas fa-clock"></i></div>
+            <h4>Office Hours</h4>
+            <p>10:00 AM – 4:00 PM<br>Sunday to Friday</p>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-top">
+        <div class="footer-brand">
+            <h1 class="logo">Bhanu<span>bhakta</span></h1>
+            <p>Shree Bhanubhakta Secondary School — Pyuthan's first authorized technical and vocational school, nurturing students since 2022 B.S.</p>
+            <div class="social-row">
+                <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Our Programs</a></li>
+                <li><a href="#">Admissions</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">News & Events</a></li>
+                <li><a href="#">Online Application</a></li>
+                <li><a href="#">Golden Jubilee Souvenir</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Contact</h4>
+            <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Mallarani Gaupalika, Ward No. 3, Barbot, Pyuthan, Lumbini Province, Nepal</span></div>
+            <div class="contact-item"><i class="fas fa-phone-alt"></i><span>9847821279</span></div>
+            <div class="contact-item"><i class="fas fa-envelope"></i><span>bhanumavi34@gmail.com</span></div>
+            <div class="contact-item"><i class="fas fa-globe"></i><span>bbsspyuthan.edu.np</span></div>
+            <div class="contact-item"><i class="fas fa-clock"></i><span>10:00 AM – 4:00 PM</span></div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        © 2026 Shree Bhanubhakta Secondary School, Pyuthan. All Rights Reserved.
+    </div>
+</footer>
+
+</body>
+</html>
